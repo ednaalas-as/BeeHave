@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F5A300" />
+    <meta
+      name="description"
+      content="BeeHave bioacoustic monitoring for coconut farms."
+    />
+    <link rel="icon" type="image/png" href="/favicon.png?v=1" />
+    <!-- Lets iOS add BeeHave to the Home Screen, the only way Safari there allows Web Push. -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <title>BeeHave · Bioacoustic monitoring</title>
+    <link rel="stylesheet" href="/src/startup.css" />
+  </head>
+  <body>
+    <div
+      id="beehave-startup"
+      role="status"
+      aria-label="Preparing BeeHave. Loading monitoring data…"
+    >
+      <div class="beehave-startup-content">
+        <div class="beehave-startup-scene" aria-hidden="true">
+          <svg
+            class="beehave-startup-acoustic"
+            viewBox="0 0 360 120"
+            fill="none"
+          >
+            <defs>
+              <linearGradient id="startup-signal">
+                <stop stop-color="#64748B" stop-opacity="0" />
+                <stop offset=".3" stop-color="#64748B" stop-opacity=".32" />
+                <stop offset=".5" stop-color="#F5A300" stop-opacity=".7" />
+                <stop offset=".7" stop-color="#64748B" stop-opacity=".32" />
+                <stop offset="1" stop-color="#64748B" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path
+              class="beehave-startup-baseline"
+              d="M12 78H348"
+              stroke="url(#startup-signal)"
+            />
+            <g
+              class="beehave-startup-frequency"
+              stroke="#F5A300"
+              stroke-width="2"
+              stroke-dasharray="2 4"
+            >
+              <path
+                d="M132 68v18m8-25v32m8-38v44m8-48v51m8-46v42m8-54v62m8-58v53m8-45v39m8-35v30m8-26v22m8-19v16m8-13v10"
+              />
+            </g>
+            <g class="beehave-startup-wave-settle">
+              <path
+                class="beehave-startup-wave"
+                d="M12 78h82q6 0 9-3t6 3 6 0 6-9 6 9 6 0 6-16 6 16 6 0 6-26 6 26 6 0 6-19 6 19 6 0 6-10 6 10 6 0 6-4 6 4h96"
+                stroke="url(#startup-signal)"
+                stroke-width="1.25"
+                stroke-linecap="round"
+              />
+            </g>
+          </svg>
+          <div class="beehave-startup-bee">
+            <svg viewBox="0 0 100 76" fill="none">
+              <defs>
+                <linearGradient
+                  id="startup-bee-amber"
+                  x1="25"
+                  y1="38"
+                  x2="61"
+                  y2="60"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#F2B740" />
+                  <stop offset="1" stop-color="#B87526" />
+                </linearGradient>
+                <linearGradient
+                  id="startup-bee-wing"
+                  x1="50"
+                  y1="15"
+                  x2="57"
+                  y2="43"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#FFFFFF" stop-opacity=".95" />
+                  <stop offset="1" stop-color="#CBD5E1" stop-opacity=".55" />
+                </linearGradient>
+                <clipPath id="startup-bee-body">
+                  <path
+                    d="M60 40C49 34 31 39 23 49c8 9 24 13 35 6 6-4 8-10 2-15Z"
+                  />
+                </clipPath>
+              </defs>
+              <g stroke="#64748B" stroke-width="1" stroke-linecap="round">
+                <path d="m49 53-5 9-9 3m22-13 5 11 7 2m-3-18 9 9 7-1" />
+              </g>
+              <path
+                d="M60 40C49 34 31 39 23 49c8 9 24 13 35 6 6-4 8-10 2-15Z"
+                fill="url(#startup-bee-amber)"
+              />
+              <g
+                clip-path="url(#startup-bee-body)"
+                stroke="#122033"
+                stroke-width="5"
+              >
+                <path d="M32 38q-5 12 2 23m9-27q-6 15 1 28m10-28q-5 14 1 25" />
+              </g>
+              <g
+                class="beehave-startup-wings"
+                fill="url(#startup-bee-wing)"
+                stroke="#94A3B8"
+                stroke-width=".8"
+              >
+                <path d="M60 43C49 42 25 24 29 15c6-11 30 6 31 28Z" />
+                <path d="M60 43C54 25 61 7 70 10c12 5 5 25-10 33Z" />
+                <path d="M60 43 35 19m25 24 9-27" fill="none" opacity=".45" />
+              </g>
+              <path
+                d="M55 40c3-7 12-9 17-3 5 7 0 16-7 17-7 0-13-7-10-14Z"
+                fill="#26364A"
+              />
+              <path d="M69 35c5-6 13-4 15 2 1 6-4 11-10 9" fill="#122033" />
+              <path
+                d="m78 33 3-8 5-2m-3 12 6-5 5 1"
+                stroke="#122033"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div class="beehave-startup-mark"></div>
+        </div>
+        <svg
+          class="beehave-startup-wordmark"
+          width="184"
+          height="27"
+          viewBox="0 0 306 44"
+          role="img"
+          aria-label="BeeHave"
+        >
+          <defs>
+            <linearGradient
+              id="startup-wordmark"
+              x1="0"
+              y1="0"
+              x2="70%"
+              y2="100%"
+            >
+              <stop offset="0" stop-color="#F2B740" />
+              <stop offset="1" stop-color="#E98132" />
+            </linearGradient>
+          </defs>
+          <g fill="#122033" fill-rule="evenodd">
+            <path
+              d="M4 2H23Q36 2 36 12Q36 18 30 20Q38 22 38 30Q38 42 24 42H4Q0 42 0 38V6Q0 2 4 2ZM10 10V17H22Q27 17 27 13.5Q27 10 22 10ZM10 25V34H23Q29 34 29 29.5Q29 25 23 25Z"
+            />
+            <path
+              d="M4 2H32Q36 2 36 6V7Q36 11 32 11H10V17H30Q34 17 34 21Q34 25 30 25H10V33H32Q36 33 36 37V38Q36 42 32 42H4Q0 42 0 38V6Q0 2 4 2Z"
+              transform="translate(45 0)"
+            />
+            <path
+              d="M4 2H32Q36 2 36 6V7Q36 11 32 11H10V17H30Q34 17 34 21Q34 25 30 25H10V33H32Q36 33 36 37V38Q36 42 32 42H4Q0 42 0 38V6Q0 2 4 2Z"
+              transform="translate(89 0)"
+            />
+          </g>
+          <g
+            fill="none"
+            stroke="url(#startup-wordmark)"
+            stroke-width="9"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M140 7V37M140 22H167M167 7V37" />
+            <path d="M183 37L200 7L217 37" />
+            <path d="M227 7L243 37L259 7" />
+          </g>
+          <path
+            d="M4 2H32Q36 2 36 6V7Q36 11 32 11H10V17H30Q34 17 34 21Q34 25 30 25H10V33H32Q36 33 36 37V38Q36 42 32 42H4Q0 42 0 38V6Q0 2 4 2Z"
+            transform="translate(270 0)"
+            fill="url(#startup-wordmark)"
+          />
+        </svg>
+        <div class="beehave-startup-status">
+          <span>Preparing BeeHave</span>
+          <span class="beehave-startup-description"
+            >Loading monitoring data…</span
+          >
+        </div>
+        <div class="beehave-startup-track" aria-hidden="true">
+          <div class="beehave-startup-complete"></div>
+          <div class="beehave-startup-scan">
+            <svg viewBox="0 0 56 12" fill="none">
+              <path
+                d="M0 6h18l3-2 3 4 4-7 4 10 3-5h21"
+                stroke="currentColor"
+                stroke-width="1"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="root" inert></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

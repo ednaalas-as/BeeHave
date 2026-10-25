@@ -1,0 +1,25 @@
+[Unit]
+Description=BeeHave API (AWS staging)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=beehave
+Group=beehave
+WorkingDirectory=/opt/beehave/app/apps/api
+EnvironmentFile=/etc/beehave/staging.env
+# Secrets are read from SSM Parameter Store at start into a root-written, 0600 runtime file.
+ExecStartPre=+/opt/beehave/load-secrets.sh
+EnvironmentFile=-/run/beehave/secrets.env
+# Same command as `npm start -w @beehave/api`, without npm writing to a home directory.
+ExecStart=/opt/beehave/app/node_modules/.bin/tsx src/server.ts
+Restart=always
+RestartSec=5
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/var/lib/beehave
+ProtectHome=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

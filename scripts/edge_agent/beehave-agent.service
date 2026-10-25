@@ -1,0 +1,28 @@
+[Unit]
+Description=BeeHave device agent (heartbeat, health, remote requests)
+After=network-online.target beehave-setup.service
+Wants=network-online.target
+
+[Service]
+User=beehave-agent
+EnvironmentFile=/etc/beehave-agent/agent.env
+# "+" runs only this step as root, to read the root-only pairing key.
+ExecStartPre=+/usr/bin/python3 /opt/beehave-agent/load_key.py
+ExecStart=/usr/bin/python3 /opt/beehave-agent/agent.py
+Restart=always
+RestartSec=30
+RuntimeDirectory=beehave-agent
+RuntimeDirectoryMode=0700
+StateDirectory=beehave-agent
+StateDirectoryMode=0700
+# Read-only view of the monitor's output only; the rest of the home folder stays hidden.
+ProtectHome=tmpfs
+BindReadOnlyPaths=/home/beehave-host/raspberry_pi_continuous_monitor_20261008/runs:/run/beehave-monitor-runs
+ProtectSystem=strict
+NoNewPrivileges=yes
+PrivateTmp=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

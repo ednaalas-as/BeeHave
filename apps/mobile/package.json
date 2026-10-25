@@ -1,0 +1,37 @@
+{
+  "name": "@beehave/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo run:ios",
+    "typecheck": "tsc -p tsconfig.json",
+    "bundle": "expo export --platform ios --platform android"
+  },
+  "dependencies": {
+    "@beehave/shared": "*",
+    "@expo-google-fonts/space-grotesk": "^0.4.1",
+    "@expo/vector-icons": "^15.0.0",
+    "expo": "~55.0.31",
+    "expo-asset": "~55.0.20",
+    "expo-audio": "~55.0.0",
+    "expo-constants": "~55.0.17",
+    "expo-crypto": "~55.0.19",
+    "expo-file-system": "~55.0.26",
+    "expo-font": "~55.0.8",
+    "expo-notifications": "~55.0.27",
+    "expo-secure-store": "~55.0.0",
+    "expo-status-bar": "~55.0.0",
+    "react": "19.2.0",
+    "react-native": "0.83.10",
+    "react-native-safe-area-context": "~5.6.2",
+    "react-native-svg": "15.15.3",
+    "react-native-zeroconf": "^0.17.6"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.0",
+    "typescript": "~5.9.2"
+  }
+}

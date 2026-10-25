@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+  <name replace-wildcards="yes">BeeHave setup · %h</name>
+  <service><type>_beehave._tcp</type><port>8765</port><txt-record>version=1</txt-record></service>
+</service-group>

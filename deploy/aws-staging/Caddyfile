@@ -1,0 +1,36 @@
+# BeeHave AWS staging: one HTTPS origin for the web app and the API (same-origin /api,
+# so the existing session cookie and web client work unchanged).
+{
+	email {$BEEHAVE_ACME_EMAIL}
+}
+
+{$BEEHAVE_HOST} {
+	encode gzip
+	handle /api/* {
+		reverse_proxy 127.0.0.1:3001 {
+			flush_interval -1
+		}
+	}
+	handle {
+		root * /opt/beehave/web
+		file_server
+	}
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		-Server
+	}
+	log {
+		output file /var/log/caddy/beehave-access.log {
+			roll_size 20MiB
+			roll_keep 5
+		}
+		format filter {
+			wrap json
+			fields {
+				# Never log headers: X-Device-Key, cookies and bearer tokens live there.
+				request>headers delete
+				resp_headers delete
+			}
+		}
+	}
+}

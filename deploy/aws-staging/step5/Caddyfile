@@ -1,0 +1,32 @@
+# BeeHave AWS staging, Step 5: HTTPS only. The BeeHave web app and API are NOT deployed yet.
+# Automatic HTTPS: Caddy obtains and renews a Let's Encrypt certificate and redirects HTTP to HTTPS.
+staging.example.com {
+	encode gzip
+	# Planned for a later step: reverse_proxy /api/* 127.0.0.1:3001 (loopback only).
+	handle /api/* {
+		respond "BeeHave staging API is not deployed yet." 503
+	}
+	handle {
+		root * /opt/beehave/web-placeholder
+		file_server
+	}
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options nosniff
+		-Server
+	}
+	log {
+		output file /var/log/caddy/beehave-access.log {
+			roll_size 20MiB
+			roll_keep 5
+		}
+		format filter {
+			wrap json
+			fields {
+				# Never log headers: device keys, cookies and bearer tokens travel there.
+				request>headers delete
+				resp_headers delete
+			}
+		}
+	}
+}

@@ -1,0 +1,299 @@
+/* All motion and styling are confined to the initial startup overlay. */
+#beehave-startup {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #edf2f7;
+  color: var(--navy, #0b1930);
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 14px;
+  transition: opacity 240ms ease 120ms;
+}
+.beehave-startup-content {
+  width: min(360px, 100%);
+  text-align: center;
+}
+.beehave-startup-scene {
+  position: relative;
+  height: 120px;
+}
+.beehave-startup-acoustic {
+  width: 100%;
+  height: 120px;
+  overflow: visible;
+}
+.beehave-startup-baseline {
+  animation: beehave-wake 700ms ease-out both;
+}
+.beehave-startup-mark {
+  position: absolute;
+  top: 8px;
+  left: calc(50% - 32px);
+  width: 64px;
+  height: 64px;
+  background: url("../../../packages/shared/assets/beehave-logo.png") center /
+    contain no-repeat;
+  animation: beehave-brand 2800ms ease-out both;
+}
+.beehave-startup-bee {
+  position: absolute;
+  top: 28px;
+  left: calc(50% - 32px);
+  width: 64px;
+  height: 49px;
+  animation: beehave-arrive 2800ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.beehave-startup-bee svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.beehave-startup-wings {
+  transform-origin: 60px 43px;
+  animation: beehave-wingbeat 120ms 420ms ease-in-out 18 alternate;
+}
+.beehave-startup-wave {
+  transform-origin: 180px 78px;
+  animation: beehave-detect 2800ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.beehave-startup-wave-settle {
+  transform-origin: 180px 78px;
+  transition:
+    transform 160ms ease-out,
+    opacity 160ms ease-out;
+}
+.beehave-startup-frequency {
+  opacity: 0;
+  animation: beehave-frequency 2800ms ease both;
+  transition: opacity 160ms ease;
+}
+.beehave-startup-wordmark {
+  display: block;
+  margin: 0 auto;
+  animation: beehave-reveal 600ms 1800ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.beehave-startup-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+  font-weight: 500;
+  animation: beehave-reveal 560ms 1840ms ease-out both;
+}
+.beehave-startup-description {
+  color: var(--slate, #64748b);
+  font-size: 12px;
+  font-weight: 400;
+}
+.beehave-startup-track {
+  position: relative;
+  height: 12px;
+  margin: 24px auto 0;
+  width: 224px;
+  max-width: 80%;
+  overflow: hidden;
+  animation: beehave-wake 400ms 200ms both;
+}
+.beehave-startup-track::before,
+.beehave-startup-complete {
+  content: "";
+  position: absolute;
+  top: 5.5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #e7ebef;
+}
+.beehave-startup-complete {
+  background: var(--amber, #f5a300);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 160ms ease-out;
+  opacity: 0.65;
+}
+.beehave-startup-scan {
+  position: absolute;
+  width: 56px;
+  height: 12px;
+  left: -56px;
+  color: var(--amber, #f5a300);
+  animation: beehave-scan 2600ms 200ms cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transition: opacity 120ms ease;
+}
+.beehave-startup-scan svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#beehave-startup[data-ready="true"] {
+  opacity: 0;
+  pointer-events: none;
+}
+#beehave-startup[data-ready="true"] .beehave-startup-wave-settle {
+  transform: scaleY(0.05);
+  opacity: 0;
+}
+#beehave-startup[data-ready="true"] .beehave-startup-frequency {
+  animation: none;
+  opacity: 0;
+}
+#beehave-startup[data-ready="true"] .beehave-startup-complete {
+  transform: scaleX(1);
+}
+#beehave-startup[data-ready="true"] .beehave-startup-scan {
+  opacity: 0;
+}
+@keyframes beehave-wake {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes beehave-brand {
+  0%,
+  60% {
+    opacity: 0;
+  }
+  85%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes beehave-arrive {
+  0%,
+  12% {
+    opacity: 0;
+    transform: translate(-100px, 28px) rotate(-12deg);
+  }
+  28% {
+    opacity: 0.9;
+    transform: translate(-68px, 2px) rotate(-10deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-20px, 24px) rotate(7deg);
+  }
+  70% {
+    opacity: 0.85;
+    transform: translate(44px, -9px) rotate(-8deg);
+  }
+  86% {
+    opacity: 0.5;
+    transform: translate(57px, -13px) rotate(-2deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(60px, -14px) rotate(0);
+  }
+}
+@keyframes beehave-wingbeat {
+  from {
+    transform: scaleY(0.82) rotate(-3deg);
+  }
+  to {
+    transform: scaleY(1) rotate(3deg);
+  }
+}
+@keyframes beehave-detect {
+  0%,
+  15% {
+    opacity: 0;
+    transform: scaleY(0.03);
+  }
+  35% {
+    opacity: 0.45;
+    transform: scaleY(0.15);
+  }
+  55% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  78% {
+    opacity: 0.7;
+    transform: scaleY(0.45);
+  }
+  100% {
+    opacity: 0.35;
+    transform: scaleY(0.2);
+  }
+}
+@keyframes beehave-frequency {
+  0%,
+  48% {
+    opacity: 0;
+  }
+  68% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.07;
+  }
+}
+@keyframes beehave-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes beehave-scan {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.7;
+  }
+  78% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(280px);
+    opacity: 0;
+  }
+}
+@media (max-width: 480px) {
+  .beehave-startup-content {
+    width: min(288px, 100%);
+  }
+  .beehave-startup-scene {
+    height: 112px;
+  }
+  .beehave-startup-status {
+    margin-top: 20px;
+  }
+  .beehave-startup-track {
+    max-width: 85%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #beehave-startup {
+    transition: opacity 160ms ease;
+  }
+  #beehave-startup *,
+  #beehave-startup *::before {
+    animation: none;
+  }
+  .beehave-startup-bee,
+  .beehave-startup-acoustic,
+  .beehave-startup-scan {
+    display: none;
+  }
+  .beehave-startup-complete {
+    transform: scaleX(0.35);
+    transition: opacity 160ms ease;
+  }
+}

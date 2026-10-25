@@ -1,0 +1,9 @@
+/** Geometric BeeHave lettering inspired by the supplied wordmark. */
+export const wordmark = {
+  viewBox: "0 0 306 44",
+  bee: "#122033",
+  amber: "#F2B740",
+  orange: "#E98132",
+  b: "M4 2H23Q36 2 36 12Q36 18 30 20Q38 22 38 30Q38 42 24 42H4Q0 42 0 38V6Q0 2 4 2ZM10 10V17H22Q27 17 27 13.5Q27 10 22 10ZM10 25V34H23Q29 34 29 29.5Q29 25 23 25Z",
+  e: "M4 2H32Q36 2 36 6V7Q36 11 32 11H10V17H30Q34 17 34 21Q34 25 30 25H10V33H32Q36 33 36 37V38Q36 42 32 42H4Q0 42 0 38V6Q0 2 4 2Z",
+};

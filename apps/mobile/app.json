@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "BeeHave",
+    "slug": "beehave",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.beehave.monitoring",
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "BeeHave finds and securely pairs your nearby Raspberry Pi and helps configure its Wi-Fi.",
+        "NSBonjourServices": [
+          "_beehave._tcp"
+        ],
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        }
+      }
+    },
+    "android": {
+      "package": "com.beehave.monitoring",
+      "permissions": [
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.ACCESS_WIFI_STATE",
+        "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+        "android.permission.ACCESS_LOCAL_NETWORK"
+      ]
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false
+        }
+      ],
+      "expo-font",
+      [
+        "expo-notifications",
+        {
+          "color": "#F5A300"
+        }
+      ],
+      "./plugins/withNearbySetup.cjs"
+    ]
+  }
+}

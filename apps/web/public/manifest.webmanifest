@@ -1,0 +1,11 @@
+{
+  "name": "BeeHave",
+  "short_name": "BeeHave",
+  "description": "BeeHave bioacoustic monitoring for coconut farms.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#EDF2F7",
+  "theme_color": "#F5A300",
+  "icons": [{ "src": "/favicon.png", "sizes": "1254x1254", "type": "image/png", "purpose": "any" }]
+}

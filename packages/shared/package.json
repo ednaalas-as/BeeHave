@@ -1,0 +1,21 @@
+{
+  "name": "@beehave/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./chart-series": "./src/chart-series.ts",
+    "./nearby": "./src/nearby.ts",
+    "./wifi-credential": "./src/wifi-credential.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@noble/ciphers": "^1.3.0",
+    "@noble/curves": "2.4.0",
+    "@noble/hashes": "^2.4.0",
+    "zod": "^3.25.76"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "beehave",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "test:audio": "python3 -m unittest discover -s scripts/edge_agent -p 'test_*.py' && npm run test:audio -w @beehave/api",
+    "dev": "concurrently -k -n api,web \"npm run dev -w @beehave/api\" \"npm run dev -w @beehave/web\"",
+    "mobile": "npm start -w @beehave/mobile",
+    "build": "npm run build -w @beehave/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm test -w @beehave/api && python3 -m unittest discover -s scripts -p \"test_*.py\" -v && python3 -m unittest scripts/edge_agent/test_agent.py",
+    "lint": "eslint apps packages",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build",
+    "format": "prettier --write apps packages docs scripts README.md *.json eslint.config.js",
+    "ios": "EXPO_PUBLIC_API_URL=http://127.0.0.1:3001 npm start -w @beehave/mobile -- --ios --lan"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "typescript": "~5.9.2",
+    "tsx": "^4.20.5",
+    "@types/node": "^22.18.0",
+    "eslint": "^9.34.0",
+    "typescript-eslint": "^8.41.0",
+    "prettier": "^3.6.2"
+  },
+  "engines": {
+    "node": ">=20.19.4"
+  },
+  "overrides": {
+    "expo-asset": "~55.0.20",
+    "xcode": {
+      "uuid": "^11.1.1"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@beehave/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:audio": "tsx --test src/pi-pipeline.test.ts src/audio-transfer.test.ts src/brtc-crosswalk.test.ts src/audio-windows.test.ts src/canonical-segment.test.ts",
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "tsx --test src/api.test.ts src/device-commands.test.ts src/agent-e2e.test.ts src/monitoring-status.test.ts src/audio-windows.test.ts src/canonical-segment.test.ts src/trust-proxy.test.ts src/password-recovery.test.ts src/series.test.ts src/wifi-credential.test.ts src/farm-access.test.ts src/setup-label.test.ts src/notifications.test.ts",
+    "reset-password": "tsx src/reset-password.ts",
+    "provision-device": "tsx src/provision-device.ts",
+    "db:migrate-sqlite": "tsx src/database/migrate-sqlite.ts"
+  },
+  "dependencies": {
+    "@beehave/shared": "*",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "pg": "^8.23.0",
+    "web-push": "^3.6.7"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.3",
+    "@types/pg": "^8.23.1",
+    "@types/web-push": "^3.6.4",
+    "better-sqlite3": "^11.10.0"
+  }
+}
